@@ -1,0 +1,24 @@
+<nav style="background-color: #2d3748; padding: 10px; display: flex; align-items: center; justify-content: space-between; color: white;">
+  <div>
+    <strong style="margin-right: 20px;">Friends App</strong>
+
+    <% if user_signed_in? %>
+      <%= link_to "Friends", friends_path, style: "margin-right: 10px; color: white; text-decoration: none;" %>
+      <%= link_to "Add Friend", new_friend_path, style: "margin-right: 10px; color: white; text-decoration: none;" %>
+      <%= link_to "Edit Profile", edit_user_registration_path, style: "margin-right: 10px; color: white; text-decoration: none;" %>
+      <%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete }, style: "margin-right: 10px; color: white; text-decoration: none;" %>
+    <% else %>
+      <%= link_to "Sign Up", new_user_registration_path, style: "margin-right: 10px; color: white; text-decoration: none;" %>
+      <%= link_to "Sign In", new_user_session_path, style: "margin-right: 10px; color: white; text-decoration: none;" %>
+    <% end %>
+  </div>
+
+  <div>
+    <form action="<%= friends_path %>" method="get" style="display: flex;">
+      <input type="text" name="q" placeholder="Search" style="padding: 5px; border-radius: 4px; border: none;">
+      <button type="submit" style="margin-left: 10px; padding: 5px 10px; border: none; border-radius: 4px; background-color: #4caf50; color: white;">
+        Search
+      </button>
+    </form>
+  </div>
+</nav>
